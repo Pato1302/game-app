@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Login } from './components/Login';
+import { Layout } from './components/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { Friends } from './components/Friends';
+import { FriendInfo } from './components/FriendInfo';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Login />} />
+
+        <Route path= "/home" element={<Layout/>} >
+          <Route index element={
+            <ProtectedRoute>
+              <div>Home</div>
+            </ProtectedRoute>}></Route>
+
+          <Route path="friends" element={
+            <ProtectedRoute>
+              <Friends/>
+            </ProtectedRoute>}>
+                <Route path=":friendId" element={<FriendInfo/>}></Route>
+            </Route>
+
+        </Route>
+        <Route path="*" element={<h1>404: Not Found</h1>} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
