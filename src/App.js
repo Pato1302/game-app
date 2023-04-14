@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Friends } from './components/Friends';
 import { FriendInfo } from './components/FriendInfo';
+import { PasswordRecovery } from './components/PasswordRecovery';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             </Route>
 
         </Route>
+        <Route path="/recover" element={<PasswordRecovery/>}></Route>
         <Route path="*" element={<h1>404: Not Found</h1>} />
 
       </Routes>

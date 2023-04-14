@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './Login.css'
@@ -13,6 +13,7 @@ export const Login = () => {
     const form = useRef();
     const navigate = useNavigate(); // Hook para redireccionar
     const [modalState, setModalState] = useState(false);
+    
 
     const envioDatos = async (event) => {
         event.preventDefault();
@@ -85,6 +86,7 @@ export const Login = () => {
             <Button type="submit">
                 Iniciar sesión
             </Button>
+            <Link to="/recover"> Recuperar Contraseña </Link>
             </div>
 
         </Form>
